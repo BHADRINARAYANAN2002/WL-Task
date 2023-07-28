@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>STUDENT DETAILS</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>STUDENT Name</th>
+                <th>STUDENT Mail</th>
+                <th>Mobile Number</th>
+                <th>Gender</th>
+                <th>Dob</th>
+                <th>STUDENT REGISTER NUMBER </th>
+                <th>ALTERNATE MOBILE NUMBER</th>
+                <th>Date of joining</th>
+                <!-- data.map((item)=>{
+                 
+                    elem.innerHTML+=`
+                    
+                    <h4> name : ${item.emp_name} emp_name :${item.emp_mail} employee_mobile:${item.emp_mob} gender:${item.gender} dob:${item.dob} previousexperience :${item.previousexp}  qualification :${item.qualification} dateofjoining:${item.dateofjoining}</h4>`;
+                
+                   }) -->
+               
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+<div id="main"></div>
+<script>
+    async function getdata(){
+        let datas=await fetch("http://localhost:3000/get",{
+             method:"GET",
+         });
+         let data=await datas.json();
+         console.log(data);
+         const elem=document.getElementById("main");
+         const elem2=document.querySelector("tbody");
+        let content="";
+        data.forEach(item => {
+            content+=`
+            <tr>
+            <td>${item.emp_name}</td>
+            <td>${item.emp_mail}</td>
+            <td>${item.emp_mob}</td>
+            <td>${item.gender}</td>
+            <td>${item.dob}</td>
+            <td>${item.previousexp}</td>
+            <td>${item.qualification}</td>
+            <td>${item.dateofjoining}</td>
+            </tr>
+            `
+        });
+        elem2.innerHTML=content;
+    }
+    
+    
+    
+    
+        getdata()
+
+</script>
+</body>
+</html>

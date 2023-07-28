@@ -1,0 +1,12 @@
+#emp_from {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    display: block;
+    margin-top: 8px;
+}
